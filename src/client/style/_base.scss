@@ -1,0 +1,94 @@
+/*
+COLORS
+
+Grey light 1: #faf9f9
+Grey light 2: #f4f2f2
+Grey light 3: #f0eeee
+Grey light 4: #ccc
+
+Grey dark 1: #333
+Grey dark 2: #777
+Grey dark 3: #999
+
+Flexbox replaces floats ***
+
+Flexbox concepts
+    Main axis - left to right
+    Cross axis - top to bottom
+    display:flex for flex container then rest are flex items
+    container
+        flex-direction: row | row-reverse | column | column-reverse - main axis
+        flex-wrap : nowrap | wrap | wrap-reverse
+        justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly - main axis
+        align-items: stretch | flex-start | flex-end | center | baseline - cross axis
+        align-content : stretch | flex-start | flex-end | center | space-between | space-around - used when more than one row of flex items and says how they should align across cross axis
+    item
+        align-self : auto | stretch | flex-start | flex-end | center | baseline
+        order: 0 | <integer>
+        flex-grow : 0 | <integer>  specifies the flex grow factor of a flex item. It specifies how much of the available space in the flex container should be assigned to that item. If all sibling items have the same flex grow factor, then all items will receive the same share of available space, otherwise it is distributed according to the ratio defined by the different flex grow factors.
+        flex-shrink : 0 | <integer> The width of content is 500px; the flex-basis of the flex items is 120px. A, B, C have flex-shrink:1 set. D and E have flex-shrink:2 set The width of D and E is less than the others.
+        flex-basis: auto | <length> this is for default width of item
+    short property of above three is 
+        flex: 0 1 auto <grow shrink basis>
+    :root Used for higher specificity than html and where CSS variables should be defined to be inherited by whole document 
+*/
+
+:root {
+    --color-primary: #eb2f64;
+    --color-primary-light: #FF3366;
+    --color-primary-dark: #BA265D;
+
+    --color-grey-light-1: #faf9f9;
+    --color-grey-light-2: #f4f2f2;
+    --color-grey-light-3: #f0eeee;
+    --color-grey-light-4: #ccc;
+
+    --color-grey-dark-1: #333;
+    --color-grey-dark-2: #777;
+    --color-grey-dark-3: #999;
+
+    --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
+    --shadow-light:  0 2rem 5rem rgba(0,0,0,.06);
+
+    --line: 1px solid var(--color-grey-light-2);
+}
+
+$bp-largest: 75em; // 1200px ( / 16)
+$bp-large: 68.75em; // 1100 px
+$bp-medium: 56.25em; // 900px
+$bp-small: 37.5em; // 600px
+$bp-smallest: 31.25em; // 500px
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; //1rem = 10 px 10 / 16 px = 62.5
+
+    @media only screen and (max-width: $bp-large){
+        font-size: 50%;
+
+    }
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-grey-dark-2);
+    background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    min-height: 100vh;
+}
