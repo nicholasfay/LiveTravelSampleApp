@@ -4,47 +4,85 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Home from '../img/SVG/home.inline.svg';
-import Key from '../img/SVG/key.inline.svg';
-import Map from '../img/SVG/map.inline.svg';
-import TakeOff from '../img/SVG/aircraft-take-off.inline.svg';
+import Experience from '../img/SVG/experience.inline.svg';
+import Food from '../img/SVG/food.inline.svg';
 
 class Sidebar extends Component {
+    constructor() {
+        super()
+        this.state = {
+            "tabSelection": "",
+            "clickPos": "up"
+        }
+    }
+
     dispatch = (type) => {
-        this.props.tabSelect(type);
+        this.props.tabSelect(type, Date.now());
+    }
+
+    onMouseDown = (type) => {
+        this.setState({ "clickPos": "down", "tabSelection": type })
+    }
+
+    onMouseUp = () => {
+        this.setState({ "clickPos": "up" })
     }
 
     render() {
+        let classNameHotel = "side-nav__item"
+        let classNameExp = "side-nav__item"
+        let classNameRest = "side-nav__item"
+
+        if (this.state.tabSelection == "hotel") {
+            if (this.state.clickPos == "down") {
+                classNameHotel = "side-nav__item side-nav__item--clicked"
+            }
+            else {
+                classNameHotel = "side-nav__item side-nav__item--active"
+            }
+        }
+        else if (this.state.tabSelection == "experience") {
+            if (this.state.clickPos == "down") {
+                classNameExp = "side-nav__item side-nav__item--clicked"
+            }
+            else {
+                classNameExp = "side-nav__item side-nav__item--active"
+            }
+        }
+        else if (this.state.tabSelection == "restaurant") {
+            if (this.state.clickPos == "down") {
+                classNameRest = "side-nav__item side-nav__item--clicked"
+            }
+            else {
+                classNameRest = "side-nav__item side-nav__item--active"
+            }
+        }
+
         return (
             <nav className="sidebar">
                 <ul className="side-nav">
-                    <li onClick={() => { this.dispatch('hotel') }} className={this.props.tabSelection == "hotel" ? "side-nav__item side-nav__item--active" : "side-nav__item"}>
-                        <a href="#" className="side-nav__link">
+                    <li onMouseDown={() => { this.onMouseDown("hotel") }} onMouseUp={this.onMouseUp} onClick={() => { this.dispatch('hotel') }} className={classNameHotel}>
+                        <a className="side-nav__link">
                             <Home className="side-nav__icon" />
-                            <span>Hotel</span>
+                            <span className="side-nav__text">Hotel</span>
                         </a>
                     </li>
-                    <li onClick={() => { this.dispatch('flight') }} className={this.props.tabSelection == "flight" ? "side-nav__item side-nav__item--active" : "side-nav__item"}>
-                        <a href="#" className="side-nav__link">
-                            <TakeOff className="side-nav__icon" />
-                            <span>Flight</span>
+                    <li onMouseDown={() => { this.onMouseDown("experience") }} onMouseUp={this.onMouseUp} onClick={() => { this.dispatch('experience') }} className={classNameExp}>
+                        <a className="side-nav__link">
+                            <Experience className="side-nav__icon" />
+                            <span className="side-nav__text">Experiences</span>
                         </a>
                     </li>
-                    <li onClick={() => { this.dispatch('car') }} className={this.props.tabSelection == "car" ? "side-nav__item side-nav__item--active" : "side-nav__item"}>
-                        <a href="#" className="side-nav__link">
-                            <Key className="side-nav__icon" />
-                            <span>Car Rental</span>
-                        </a>
-                    </li>
-                    <li onClick={() => { this.dispatch('tours') }} className={this.props.tabSelection == "tours" ? "side-nav__item side-nav__item--active" : "side-nav__item"}>
-                        <a href="#" className="side-nav__link">
-                            <Map className="side-nav__icon" />
-                            <span>Tours</span>
+                    <li onMouseDown={() => { this.onMouseDown("restaurant") }} onMouseUp={this.onMouseUp} onClick={() => { this.dispatch('restaurant') }} className={classNameRest}>
+                        <a className="side-nav__link">
+                            <Food className="side-nav__icon" />
+                            <span className="side-nav__text">Restaurants</span>
                         </a>
                     </li>
                 </ul>
                 <div className="legal">
                     &copy; 2017 Trillo. All rights reserved.
-            </div>
+                </div>
             </nav>
         );
     }

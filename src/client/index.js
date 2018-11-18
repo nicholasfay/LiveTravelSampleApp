@@ -19,10 +19,16 @@ const store = createStore(
     {
         auth: {
             jwt: null,
-            currUser: null
+            user: null
         },
         ui: {
             tabSelection: null,
+            hotelstart: Date.now() - 5,
+            experiencestart: Date.now(),
+            restaurantstart: Date.now(),
+            hotel: [],
+            experience: [],
+            restaurant: []
         }
     },
     applyMiddleware(reduxThunk)

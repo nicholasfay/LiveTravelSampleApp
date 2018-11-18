@@ -13,29 +13,35 @@ class Signin extends Component {
 	};
 
 	render() {
-		const { handleSubmit } = this.props;
+		const { handleSubmit, errorMessage } = this.props;
+
+		if (errorMessage) {
+			alert(errorMessage);
+		}
+
 		return (
 			<form onSubmit={handleSubmit(this.onSubmit)}>
 				<fieldset>
-					<label>Email</label>
 					<Field
+						className="user-auth__input"
 						name="email"
 						type="text"
 						component="input"
 						autoComplete="none"
+						placeholder="Email"
 					></Field>
 				</fieldset>
 				<fieldset>
-					<label>Password</label>
 					<Field
+						className="user-auth__input"
 						name="password"
 						type="password"
 						component="input"
 						autoComplete="none"
+						placeholder="Password"
 					></Field>
 				</fieldset>
-				<div>{this.props.errorMessage}</div>
-				<button>Sign in!</button>
+				<button className="btn-home">Sign in!</button>
 			</form>
 		);
 	}

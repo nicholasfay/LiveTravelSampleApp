@@ -37,6 +37,18 @@
     }
 }
 
+.wrap-content {
+    display: flex;
+    flex-wrap: wrap;
+
+    max-height: 1000px;
+    overflow: auto;
+
+    @media only screen and(max-width: $bp-medium) {
+        flex-direction: column;
+    }
+}
+
 .sidebar {
     background-color: var(--color-grey-dark-1);
 

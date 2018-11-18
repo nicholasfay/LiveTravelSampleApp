@@ -8,9 +8,9 @@ function tokenForUser(user) {
 }
 
 exports.signin = function (req, res, next) {
-	//User has already had their email and password auth'd
+	//User has already had their email and password auth'd through passport service
 	//We just need to give them a token
-	res.json({ token: tokenForUser(req.user) });
+	res.json({ token: tokenForUser(req.user), user: req.user });
 }
 
 exports.signup = function (req, res, next) {
