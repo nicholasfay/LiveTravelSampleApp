@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Hotel from './Hotel';
 import Card from './Card';
 
 class Main extends Component {
     renderContent = () => {
-        console.log(this.props)
         if (!this.props.jwt) {
             return (
                 <main className="logged-out-view">
@@ -19,32 +17,52 @@ class Main extends Component {
         else {
             switch (this.props.tabSelection) {
                 case ('hotel'):
-                    if (this.props.hotel) {
-                        return (
-                            <main className="wrap-content">
-                                {
-                                    this.props.hotel.map((hotel) => {
-                                        return (
-                                            <Card
-                                                key={hotel._id}
-                                                {...hotel}
-                                            />
-                                        )
-                                    })
-                                }
-                            </main>
-                        );
-                    }
-                    else {
-                        return <div>Loading!</div>
-                    }
+                    return (
+                        <main className="wrap-content">
+                            {
+                                this.props.hotel.map((hotel) => {
+                                    return (
+                                        <Card
+                                            key={hotel._id}
+                                            cat="hotel"
+                                            {...hotel}
+                                        />
+                                    )
+                                })
+                            }
+                        </main>
+                    );
                 case ('experience'):
                     return (
-                        <Hotel />
+                        <main className="wrap-content">
+                            {
+                                this.props.experience.map((exp) => {
+                                    return (
+                                        <Card
+                                            key={exp._id}
+                                            cat="experience"
+                                            {...exp}
+                                        />
+                                    )
+                                })
+                            }
+                        </main>
                     );
                 case ('restaurant'):
                     return (
-                        <Hotel />
+                        <main className="wrap-content">
+                            {
+                                this.props.restaurant.map((rest) => {
+                                    return (
+                                        <Card
+                                            key={rest._id}
+                                            cat="restaurant"
+                                            {...rest}
+                                        />
+                                    )
+                                })
+                            }
+                        </main>
                     );
                 default:
                     return (
@@ -65,8 +83,7 @@ class Main extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
-    return { tabSelection: state.ui.tabSelection, jwt: state.auth.jwt, hotel: state.ui.hotel };
+    return { tabSelection: state.ui.tabSelection, jwt: state.auth.jwt, hotel: state.ui.hotel, experience: state.ui.experience, restaurant: state.ui.restaurant };
 }
 
 export default connect(mapStateToProps)(Main);

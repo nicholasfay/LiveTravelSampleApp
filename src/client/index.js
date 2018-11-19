@@ -23,7 +23,7 @@ const store = createStore(
         },
         ui: {
             tabSelection: null,
-            hotelstart: Date.now() - 5,
+            hotelstart: Date.now(),
             experiencestart: Date.now(),
             restaurantstart: Date.now(),
             hotel: [],

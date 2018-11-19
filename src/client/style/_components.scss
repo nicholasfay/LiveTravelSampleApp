@@ -672,13 +672,27 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    }
 
-    &__rating::after {
-        content: " /10";
-        color: var(--color-primary);
-        font-size: 1.2rem;
-        font-weight: 300;
+        &--hotel::after {
+            content: " /10";
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        &--experience::after {
+            content: " /5";
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        &--restaurant::after {
+            content: " /10";
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
     }
 
     &__item {
