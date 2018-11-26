@@ -33,6 +33,5 @@ router(app);
 //Server setup
 const port = 8080;
 const server = http.createServer(app);
-server.listen(port);
+server.listen(process.env.PORT || port);
 console.log('Server listening on:', port);
-console.log('d')
