@@ -1,21 +1,16 @@
 language: node_js
-
 node_js:
-  - "8"
-
+- '8'
 script:
-  - npm run build
-
+- npm run build
 cache: npm
-
 branches:
   only:
   - master
-
 deploy:
   provider: heroku
   api_key:
-    secure: <your-api-key>
+    secure: CvHnLXRKDB5rH1xx2Xja3kKzdFvJ7feOUScxubWdq5zoSeiFAgQEeGvcBaO+v25aGmOxmKs1xXmLKgsD2vu9/nR/K5md1SvhgGPa/b8aC0AESMdQrirhkx1kr1/jdEAtULG0SGcttYxfjzgtWqkZWk06acQ7XCqZRZ3gZO5PvZL/vxEp5x4QJbv57p3sfPkWp31NWPui3U1T1H8sfZVET8GfTkCclxAg/XZ4tgTSzxSy+xftrGnZUuc7XlkEAlwGHk3+Q80tAFXd/jZw3ruENVq8TkSdoDd+D/3AoJIApDbdc/rl7BKvI8P+XQQPklI7FnLQHM73WgeYTWlawpowg2Kgy+i4a1RKIeFNNUtyZdFtbar4rYqvndNx8FFMFgDg07YPNALkFsE+DhX5dfgbFl36Oyf5e/DkhbK6mBtw0EnTVhzdlNYTaG1iH8F/8IUkdoBGFyaVEcZVnHlJ3PHlNqtqKZlw3rU8MdojuNd8y7vugiTnI8Ril3ldlG8nNamAV/IdoysKh7R/Lotfp9vQyKZ/9tuz26cAEIvtoy4VIlvv+4lnf1fXIo9f9zbH9s6EWXxigm9+YHFeBjBGaAMad6HxTTsxw3AFuV7chmXEK1qpgV2dHU+avp8F912Zd5ZCBgXZj40do+LLTF8ctW6hD+1ucFgjdjMeJajmgkm38XQ=
   app: livetravelsampleapp
   on:
     repo: nicholasfay/LiveTravelSampleApp
