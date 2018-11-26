@@ -64,18 +64,13 @@
     flex: 1;
 }
 
-.logged-out-view {
+.main-placeholder {
     background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 1;
     height: 90vh;
-}
-
-.signed-out-message {
-    font-size: 50px;
-    text-emphasis: bold;
 }
 
 fieldset {

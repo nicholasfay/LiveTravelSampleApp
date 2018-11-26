@@ -3,14 +3,18 @@ import { connect } from 'react-redux';
 
 import Card from './Card';
 
+import Logo from '../img/logo.png';
+
 class Main extends Component {
     renderContent = () => {
         if (!this.props.jwt) {
             return (
-                <main className="logged-out-view">
-                    <div className="signed-out-message">
-                        Please Sign in to See Contents
-                        </div>
+                <main className="main-placeholder">
+                    <div className="message">
+                        <img src={Logo} alt="Trillo logo" className="message__logo" />
+                        <h1 className="message__title">Trillo</h1>
+                        <p className="message__content">Please log in or sign up above to access Trillo.</p>
+                    </div>
                 </main>
             );
         }
@@ -66,9 +70,11 @@ class Main extends Component {
                     );
                 default:
                     return (
-                        <main className="logged-out-view">
-                            <div className="signed-out-message">
-                                Please Select a Sidebar to See Contents
+                        <main className="main-placeholder">
+                            <div className="message">
+                                <img src={Logo} alt="Trillo logo" className="message__logo" />
+                                <h1 className="message__title">Trillo</h1>
+                                <p className="message__content">Please select one of the sidebar tabs.</p>
                             </div>
                         </main>
                     );

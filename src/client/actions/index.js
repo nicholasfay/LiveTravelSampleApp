@@ -52,6 +52,7 @@ export const signin = (formProps, callback) => async dispatch => {
 };
 
 export const tabSelect = (type, time) => async (dispatch, getState) => {
+    console.log((time - getState()["ui"][type + "start"]) / 1000)
     if ((time - getState()["ui"][type + "start"]) / 1000 > 5) {
         dispatch({ type: SIDE_TAB_SELECT, payload: type })
         try {
@@ -63,6 +64,7 @@ export const tabSelect = (type, time) => async (dispatch, getState) => {
         }
     }
     else {
+        dispatch({ type: SIDE_TAB_SELECT, payload: type })
         dispatch({ type: FETCH_ERROR, payload: 'Polling DB too often' });
     }
 }

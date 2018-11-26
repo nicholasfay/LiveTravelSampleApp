@@ -1,6 +1,14 @@
 .logo {
     height: 3.25rem;
     margin-left: 2rem;
+
+    webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 .user-auth {
@@ -199,6 +207,10 @@
         }
     }
 
+    &__item--disabled {
+        pointer-events: none;
+    }
+
     &__item::before {
         content: "";
         position: absolute;
@@ -241,13 +253,17 @@
 
         @media only screen and(max-width: $bp-medium) {
             justify-content: center;
-            paddiing: 2rem;
+            padding: 2rem;
         }
 
         @media only screen and(max-width: $bp-small) {
             flex-direction: column;
             padding: 1.5rem .5rem;
         }
+    }
+
+    &__link--disabled {
+        color: var(--color-grey-light-4);
     }
 
     &__icon {
@@ -277,6 +293,14 @@
     color: var(--color-grey-light-4);
     text-align: center;
     padding: 2.5rem;
+
+    webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 
     @media only screen and(max-width: $bp-medium) {
         display: none;
@@ -427,6 +451,36 @@
 //Paragraph
 .paragraph:not(:last-of-type) {
     margin-bottom: 2rem;
+}
+
+//Message
+.message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+
+    &__title {
+        font-size: 5rem;
+        text-emphasis: bold;
+        font-family: cursive;
+    }
+
+    &__logo {
+        height: 20rem;
+    }
+
+    &__content {
+        font-size: 2rem;
+    }
 }
 
 
