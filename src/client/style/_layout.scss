@@ -25,7 +25,8 @@
     @media only screen and(max-width: $bp-smallest) {
         flex-wrap: wrap;
         height: 12rem;
-        align-content: space-around;
+        align-content: center;
+        justify-content: center;
     }
 }
 
@@ -41,11 +42,14 @@
     display: flex;
     flex-wrap: wrap;
 
-    max-height: 1000px;
+    min-height: 100rem;
+    height: 100rem;
+    max-height: 100rem;
     overflow: auto;
 
     @media only screen and(max-width: $bp-medium) {
         flex-direction: column;
+        flex-wrap: nowrap;
         max-height: none;
     }
 }
@@ -75,6 +79,10 @@
 
 fieldset {
     border: none;
+
+    @media only screen and(max-width: $bp-smallest) {
+        margin-top: .5rem;
+    }
 }
 
 .detail {

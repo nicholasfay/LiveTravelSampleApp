@@ -38,7 +38,7 @@ exports.signup = function (req, res, next) {
 
 		user.save(function (err) {
 			if (err) { return next(err); }
-			res.json({ token: tokenForUser(user) });
+			res.json({ token: tokenForUser(user), user: req.user  });
 			//Respond to request indicating user was created
 		});
 	});
