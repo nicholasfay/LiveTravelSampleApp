@@ -13,7 +13,7 @@ export const signup = (formProps, callback) => async dispatch => {
     //Redux thunk gives us total control over dispatching of actions and this is why I can return a function here
     //Similar to redux-promise but is less limited because redux-promise can only return the one promise not the ability to dispatch many actions
     try {
-        const response = await axios.post('http://localhost:8080/signup', formProps);
+        const response = await axios.post('/signup', formProps);
 
         dispatch({ type: AUTH_USER, payload: response.data.token });
         localStorage.setItem('token', response.data.token);
@@ -42,7 +42,7 @@ export const signin = (formProps, callback) => async dispatch => {
     //Redux thunk gives us total control over dispatching of actions and this is why I can return a function here
     //Similar to redux-promise but is less limited because redux-promise can only return the one promise not the ability to dispatch many actions
     try {
-        const response = await axios.post('http://localhost:8080/signin', formProps);
+        const response = await axios.post('/signin', formProps);
         dispatch({ type: AUTH_USER, payload: response.data });
         localStorage.setItem('token', response.data.token);
         callback();
@@ -56,7 +56,7 @@ export const tabSelect = (type, time) => async (dispatch, getState) => {
     if ((time - getState()["ui"][type + "start"]) / 1000 > 5) {
         dispatch({ type: SIDE_TAB_SELECT, payload: type })
         try {
-            const response = await axios.get('http://localhost:8080/data/' + type, { headers: { "Authorization": getState()["auth"]["jwt"] } });
+            const response = await axios.get('/data/' + type, { headers: { "Authorization": getState()["auth"]["jwt"] } });
             dispatch({ type: DATA_UPDATE, index: type, payload: response.data })
             dispatch({ type: DATA_START_TIME, index: type, payload: Date.now() })
         } catch (e) {

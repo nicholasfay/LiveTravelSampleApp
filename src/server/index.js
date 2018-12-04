@@ -6,12 +6,15 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
-const cors = require('cors');
+const path = require('path');
 
 //DB setup - creates a db within mongodb called auth (named from the /auth)
-mongoose.connect('mongodb://localhost:27017/auth');
+mongoose.connect('mongodb://nick:nickdev1@ds259079.mlab.com:59079/travelappdemo');
 
 //App setup
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname + '/../../dist')));
 
 //Express middleware
 
@@ -22,7 +25,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json({ type: '*/*' }));
 
 //Allows CORS requests to make local development easier
-app.use(cors());
+// app.use(cors());
 
 router(app);
 
@@ -30,5 +33,5 @@ router(app);
 //Server setup
 const port = 8080;
 const server = http.createServer(app);
-server.listen(port);
+server.listen(process.env.PORT || port);
 console.log('Server listening on:', port);
